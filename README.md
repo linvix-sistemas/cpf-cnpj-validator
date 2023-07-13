@@ -16,7 +16,7 @@ Node ``^8.0.0``.
 
 ### Instalação:
 ```
-npm i cpf-cnpj-validator -S
+yarn add @linvix-sistemas/cpf-cnpj-validator
 ```
 
 ### Uso:
