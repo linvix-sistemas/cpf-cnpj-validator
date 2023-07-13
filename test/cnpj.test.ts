@@ -41,24 +41,24 @@ describe("CNPJ", () => {
   });
 
   test("retorna número não formatado", () => {
-    var number = cnpj.strip("54550[752#0001..$55");
+    var number = validator.cnpj.strip("54550[752#0001..$55");
     expect(number).toEqual("54550752000155");
   });
 
   test("retorna número formatado", () => {
-    var number = cnpj.format("54550752000155");
+    var number = validator.cnpj.format("54550752000155");
     expect(number).toEqual("54.550.752/0001-55");
   });
 
   test("gera número formatado", () => {
-    var number = cnpj.generate(true);
+    var number = validator.cnpj.generate(true);
 
     expect(number).toMatch(/^(\d{2}).(\d{3}).(\d{3})\/(\d{4})-(\d{2})$/);
     expect(validator.cnpj.isValid(number)).toBeTruthy();
   });
 
   test("gera número não formatado", () => {
-    var number = cnpj.generate();
+    var number = validator.cnpj.generate();
 
     expect(number).toMatch(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/);
     expect(validator.cnpj.isValid(number)).toBeTruthy();
