@@ -1,4 +1,6 @@
 import cpf from "./cpf";
 import cnpj from "./cnpj";
 
-export default { cpf, cnpj };
+const CPFCNPJValidator = { cpf, cnpj };
+
+export default CPFCNPJValidator;
