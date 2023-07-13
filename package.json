@@ -11,9 +11,7 @@
     "build": "bili src/index.ts",
     "test": "ts-node jest.startup.ts --detectOpenHandles --forceExit --no-cache",
     "pretest": "npm run build",
-    "release": "release-it && yarn publish",
-    "publish": "yarn npm publish --access public",
-    "prepublishOnly": "npm run test"
+    "release": "npm run test && release-it && npm publish --access public"
   },
   "files": [
     "dist/",
