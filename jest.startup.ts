@@ -1,3 +1,3 @@
-declare var require: any
+declare var require: any;
 
-require('jest-cli').run()
+require("jest-cli").run();

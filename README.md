@@ -59,38 +59,6 @@ cnpj.format(num);
 
 Veja mais exemplos práticos consultando os testes para [CPF](./test/cpf.test.ts) e [CNPJ.](./test/cpf.test.ts)
 
-### Joi
-
-[joi](https://www.npmjs.com/package/joi) é uma excelente biblioteca para validação de objetos javascript que permite a construção de mecanismos personalizados.
-A biblioteca [cpf-cnpj-validator](https://www.npmjs.com/package/cpf-cnpj-validator) disponibiliza um mecanismo personalizado para Joi capaz de validar se uma string pode ser, ou não, um número válido de CPF ou CNPJ:
-
-Para utilizar essa integração é necessário:
-
-```
-npm install joi
-```
-
-```js
-import validator from 'cpf-cnpj-validator';
-// or
-// const { validator } = require('cpf-cnpj-validator')
-//
-const Joi = require('joi').extend(validator)
-
-const cnpjSchema = Joi.document().cnpj();
-const cpfSchema = Joi.document().cpf();
-
-// valida o CPF
-cpfSchema.validate('54271113107');
-// #=> true
-
-// valida o CNPJ
-cnpjSchema.validate('38313108000107');
-// #=> true
-```
-
-Maiores informações podem ser obtidas com os testes de [validação 1](./test/validator.1.test.ts) e [validação 2](./test/validator.2.test.ts).
-
 ### Tests
 ```shell
 npm test
