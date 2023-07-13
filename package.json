@@ -10,8 +10,8 @@
   "scripts": {
     "build": "bili src/index.ts",
     "test": "ts-node jest.startup.ts --detectOpenHandles --forceExit --no-cache",
-    "pretest": "npm run build",
-    "release": "npm run test && release-it && yarn publish --access public"
+    "pretest": "yarn build",
+    "release": "yarn test && release-it && yarn publish --access public"
   },
   "files": [
     "dist/",
