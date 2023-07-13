@@ -3,11 +3,11 @@ Valida e formata strings de CPF ou CNPJ.
 
 [![travis][travis-image]][travis-url]
 [![npm][npm-image]][npm-url]
-![GitHub top language](https://img.shields.io/github/languages/top/carvalhoviniciusluiz/cpf-cnpj-validator)
-![GitHub last commit](https://img.shields.io/github/last-commit/carvalhoviniciusluiz/cpf-cnpj-validator)
+![GitHub top language](https://img.shields.io/github/languages/top/linvix-sistemas/cpf-cnpj-validator)
+![GitHub last commit](https://img.shields.io/github/last-commit/linvix-sistemas/cpf-cnpj-validator)
 
-[travis-image]: https://travis-ci.org/carvalhoviniciusluiz/cpf-cnpj-validator.svg?branch=master
-[travis-url]: https://travis-ci.org/carvalhoviniciusluiz/cpf-cnpj-validator
+[travis-image]: https://travis-ci.org/linvix-sistemas/cpf-cnpj-validator.svg?branch=master
+[travis-url]: https://travis-ci.org/linvix-sistemas/cpf-cnpj-validator
 [npm-image]: https://img.shields.io/npm/v/cpf-cnpj-validator.svg?style=flat
 [npm-url]: https://npmjs.org/package/cpf-cnpj-validator
 
@@ -22,38 +22,38 @@ npm i cpf-cnpj-validator -S
 ### Uso:
 :warning: __NOTE__: Os exemplos estão na versão es6, mas você pode está usando a sintaxe antiga como preferir.
 ```js
-import { cpf } from 'cpf-cnpj-validator';
-// or const { cpf } = require('cpf-cnpj-validator');
+import validator from '@linvix-sistemas/cpf-cnpj-validator';
+// or const validator = require('cpf-cnpj-validator');
 
 // gera um número de cpf
-const num = cpf.generate();
+const num = validator.cpf.generate();
 // #=> 25634428777
 
 // verifica se é um número válido
-cpf.isValid(num);
+validator.cpf.isValid(num);
 // #=> true
 
 // formata o número gerado
-cpf.format(num);
+validator.cpf.format(num);
 // #=> 256.344.287-77
 ```
 
 :warning: __NOTE__: Os módulos de cpf e cnpj possuem métodos nomeados de forma igual diferindo se apenas os resultados.
 
 ```js
-import { cnpj } from 'cpf-cnpj-validator';
-// or const { cnpj } = require('cpf-cnpj-validator');
+import validator from '@linvix-sistemas/cpf-cnpj-validator';
+// or const validator = require('cpf-cnpj-validator');
 
 // gera um número de cpnj
-const num = cnpj.generate();
+const num = validator.cnpj.generate();
 // #=> 58403919000106
 
 // verifica se é um número válido
-cnpj.isValid(num);
+validator.cnpj.isValid(num);
 // #=> true
 
 // formata o número gerado
-cnpj.format(num);
+validator.cnpj.format(num);
 // #=> 58.403.919/0001-06
 ```
 
