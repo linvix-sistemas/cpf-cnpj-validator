@@ -1,6 +1,6 @@
 {
   "name": "@linvix-sistemas/cpf-cnpj-validator",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Valida e formata strings de CPF ou CNPJ.",
   "author": "Carvalho, Vinicius Luiz <carvalho.viniciusluiz@gmail.com>",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "build": "bili src/index.ts",
     "test": "ts-node jest.startup.ts --detectOpenHandles --forceExit --no-cache",
     "pretest": "yarn build",
-    "release": "yarn test && release-it && yarn publish --access public"
+    "release": "yarn test && yarn publish --access public"
   },
   "files": [
     "dist/",
