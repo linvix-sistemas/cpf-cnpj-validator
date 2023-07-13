@@ -1,6 +1,6 @@
 {
   "name": "@linvix-sistemas/cpf-cnpj-validator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Valida e formata strings de CPF ou CNPJ.",
   "author": "Carvalho, Vinicius Luiz <carvalho.viniciusluiz@gmail.com>",
   "license": "MIT",
@@ -11,6 +11,8 @@
     "build": "bili src/index.ts",
     "test": "ts-node jest.startup.ts --detectOpenHandles --forceExit --no-cache",
     "pretest": "npm run build",
+    "release": "release-it && yarn publish",
+    "publish": "yarn npm publish --access public",
     "prepublishOnly": "npm run test"
   },
   "files": [
@@ -41,16 +43,36 @@
   },
   "homepage": "https://github.com/linvix-sistemas/cpf-cnpj-validator#readme",
   "devDependencies": {
+    "@commitlint/config-conventional": "^17.6.6",
+    "@release-it/conventional-changelog": "^7.0.0",
     "@types/jest": "^23.3.14",
     "bili": "^3.4.2",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
+    "release-it": "^16.1.0",
     "rollup-plugin-typescript2": "^0.29.0",
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
     "typescript": "^3.5.3"
   },
   "peerDependencies": {},
+  "release-it": {
+    "git": {
+      "commitMessage": "release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": false
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
   "keywords": [
     "node",
     "cpf",
