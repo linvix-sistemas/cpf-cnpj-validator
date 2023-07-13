@@ -1,4 +1,4 @@
-# cpf-cnpj-validator
+# @linvix-sistemas/cpf-cnpj-validator
 Valida e formata strings de CPF ou CNPJ.
 
 [![travis][travis-image]][travis-url]
