@@ -63,4 +63,38 @@ describe("CNPJ", () => {
     expect(number).toMatch(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/);
     expect(validator.cnpj.isValid(number)).toBeTruthy();
   });
+
+  describe("CNPJ alfanumérico (IN RFB nº 2.229/2024)", () => {
+    // 1A2B3C4D5E6F → DV calculado = 34
+    const alfanumerico = "1A2B3C4D5E6F34";
+    const alfanumericoFormatado = "1A.2B3.C4D/5E6F-34";
+
+    test("valida CNPJ alfanumérico sem máscara", () => {
+      expect(validator.cnpj.isValid(alfanumerico)).toBeTruthy();
+    });
+
+    test("valida CNPJ alfanumérico com máscara (strict)", () => {
+      expect(validator.cnpj.isValid(alfanumericoFormatado, true)).toBeTruthy();
+    });
+
+    test("valida CNPJ alfanumérico em minúsculas (loose)", () => {
+      expect(validator.cnpj.isValid(alfanumerico.toLowerCase())).toBeTruthy();
+    });
+
+    test("rejeita CNPJ alfanumérico com DV errado", () => {
+      expect(validator.cnpj.isValid("1A2B3C4D5E6F00")).toBeFalsy();
+    });
+
+    test("formata CNPJ alfanumérico", () => {
+      expect(validator.cnpj.format(alfanumerico)).toEqual(alfanumericoFormatado);
+    });
+
+    test("strip remove apenas separadores em modo strict", () => {
+      expect(validator.cnpj.strip(alfanumericoFormatado, true)).toEqual(alfanumerico);
+    });
+
+    test("strip remove caracteres inválidos em modo loose", () => {
+      expect(validator.cnpj.strip("1A[2B#3C4D.5E6F--34")).toEqual(alfanumerico);
+    });
+  });
 });
