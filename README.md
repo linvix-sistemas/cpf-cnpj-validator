@@ -44,7 +44,7 @@ validator.cpf.format(num);
 import validator from '@linvix-sistemas/cpf-cnpj-validator';
 // or const validator = require('cpf-cnpj-validator');
 
-// gera um número de cpnj
+// gera um número de cnpj
 const num = validator.cnpj.generate();
 // #=> 58403919000106
 
@@ -57,7 +57,27 @@ validator.cnpj.format(num);
 // #=> 58.403.919/0001-06
 ```
 
-Veja mais exemplos práticos consultando os testes para [CPF](./test/cpf.test.ts) e [CNPJ.](./test/cpf.test.ts)
+#### CNPJ Alfanumérico (IN RFB nº 2.229/2024)
+
+A partir de julho de 2026, a Receita Federal passou a emitir CNPJs com caracteres alfanuméricos nos 12 primeiros dígitos (A–Z e 0–9). Os dois dígitos verificadores continuam sendo sempre numéricos.
+
+A conversão segue a fórmula: `valor = charCode(caractere) - charCode('0')`, o que preserva o valor dos dígitos (`'0'` → 0, `'9'` → 9) e mapeia letras a valores acima de 9 (`'A'` → 17, `'B'` → 18, …, `'Z'` → 42).
+
+```js
+// CNPJ alfanumérico sem máscara
+validator.cnpj.isValid('1A2B3C4D5E6F34');
+// #=> true
+
+// com máscara (modo strict)
+validator.cnpj.isValid('1A.2B3.C4D/5E6F-34', true);
+// #=> true
+
+// formatar
+validator.cnpj.format('1A2B3C4D5E6F34');
+// #=> 1A.2B3.C4D/5E6F-34
+```
+
+Veja mais exemplos práticos consultando os testes para [CPF](./test/cpf.test.ts) e [CNPJ](./test/cnpj.test.ts).
 
 ### Tests
 ```shell
